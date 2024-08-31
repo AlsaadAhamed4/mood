@@ -9,7 +9,7 @@ const globalForPrisma = globalThis as unknown as {   // this is like a global va
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({   // this is log in dev mood to see 
-    log: ['query'],
+    log: ['query'], // this is to log in each query
   })
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
