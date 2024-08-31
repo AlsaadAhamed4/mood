@@ -39,7 +39,7 @@ CREATE UNIQUE INDEX "User_clerkId_key" ON "User"("clerkId");
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE INDEX "JournalEntry_userId_idx" ON "JournalEntry"("userId");
+CREATE UNIQUE INDEX "JournalEntry_userId_id_key" ON "JournalEntry"("userId", "id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Analysis_entryID_key" ON "Analysis"("entryID");

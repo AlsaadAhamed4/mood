@@ -36,7 +36,7 @@ model JournalEntry {
 
   analysis Analysis? // one to one relationship 1 analysis will have one journal entry
 
-  @@index([userId])
+  @@unique([userId, id]) // make userid like with compound unique by id , basically userID + id combination is allowed , this is usefull for querying and 1 to many
 }
 
 model Analysis {
