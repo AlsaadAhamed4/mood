@@ -20,36 +20,9 @@ const getEntry = async (id) => {
 
 const EntryPage = async ({ params }) => {
     const entry = await getEntry(params.id);
-    //const {mood, summary, color, subject, negative} = entry  // sionce I added the analysis in query will get the data here
-    const analysisData = [
-        { name: 'Subject', value: '', },  // map the above desctructured value to this data. if you want to rethink for activating the open ai API
-        { name: 'Summary', value: '', },
-        { name: 'Mood', value: '', },
-        { name: 'Negative', value: 'False', },
-    ]
     return (
-        <div className="w-full h-full grid grid-cols-3">
-            <div className="col-span-2">
+        <div className="w-full h-full">
                 <Editor entry={entry} />
-            </div>
-            <div className="col-span-1 border border-black/10">
-                {/* Add the color using styles */}
-                <div className="bg-blue-300 px-6 py-10">
-                    <h2 className="text-2xl">Analysis</h2>
-                </div>
-                <div>
-                    <ul>
-                        {
-                            analysisData.map((item) => (
-                                <li className="px-2 py-4 border-b border-t border-black/10 flex items-center justify-between" key={item.name}>
-                                    <span className="text-lg font-semibold">{item.name}</span>
-                                    <span>{item.value}</span>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </div>
         </div>
     )
 }

@@ -18,7 +18,7 @@ export const PATCH = async (request, {params})=>{
         }
     })
     // const analysis = await analyze(updateEntry.content)
-    // await prisma.analysis.upsert({  // if u find then update else create a new one
+    // const updatedAnalysis =  await prisma.analysis.upsert({  // if u find then update else create a new one
     //     where :{
     //         entryID : updateEntry.id  
     //     },
@@ -28,5 +28,7 @@ export const PATCH = async (request, {params})=>{
     //     },
     //     update : analysis,  // if found update the analysis
     // })
+    //  return NextResponse.json({data : {...updateEntry, analysis : updatedAnalysis}})
+    
     return NextResponse.json({data : updateEntry})  // since the is like patch call we will send the updated data back
 }
