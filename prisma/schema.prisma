@@ -45,7 +45,7 @@ model Analysis {
   updatedAt DateTime @updatedAt // use the db update date 
 
   entryID String
-  entry   JournalEntry @relation(fields: [entryID], references: [id]) // defining a relationship
+  entry   JournalEntry @relation(fields: [entryID], references: [id], onDelete: Cascade) // defining a relationship  // on delete of a journal then delete the related analysis also in db by cascade
 
   mood     String
   summary  String  @db.Text() // long text.
