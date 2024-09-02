@@ -1,7 +1,11 @@
 import { PromptTemplate } from 'langchain';
+import { Document } from 'langchain/dist/document';
 import {OpenAI} from 'langchain/llms/openai';
 import {StructuredOutputParser} from 'langchain/output_parsers';
 import z from 'zod'; // for schema related things
+import {loadQARefineChain} from 'langchain/chains'
+import {OpenAIEmbeddings} from 'langchain/embeddings'
+import {MemoryVectorStore} from 'langchain/vectorstores/memory'
 
 const analysisSchema = z
   .object({
@@ -43,3 +47,24 @@ export const analyze = async (content)=>{
         console.error(error)  // basically handling when parser fails to parse this might happen 
     }
 }
+
+export const qa = async (question, entries) => {
+    const docs = entries.map(
+      (entry) =>
+        new Document({  // making an landchain doc for having a vector data
+          pageContent: entry.content,
+          metadata: { source: entry.id, date: entry.createdAt },
+        })
+    )
+    const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })  // load the model
+    const chain = loadQARefineChain(model) // qa refine chain is like we are going through all the documents and getting the data from AI, checks which document is near to the context basically used at QA task
+    const embeddings = new OpenAIEmbeddings()  // are group of vectos open ai calls it
+    const store = await MemoryVectorStore.fromDocuments(docs, embeddings) // current we are storing the data in the memory & genarte vectrs for our docs and embeds
+    const relevantDocs = await store.similaritySearch(question) // once we stored then search for similarities
+    const res = await chain.call({  // lang chain call for getting vector data
+      input_documents: relevantDocs,
+      question,
+    })
+  
+    return res.output_text
+  }
