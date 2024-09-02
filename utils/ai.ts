@@ -36,5 +36,10 @@ export const analyze = async (content)=>{
     console.log('entered analyze');
     const model = new OpenAI({temperature : 0, modelName: 'gpt-3.5-turbo'}) // basically here we are referencing which model we are using of chat gpt, temparature describes the top opinion from the pool ( 0 means more real ) basically 
     const result = await model.call(input);
-    console.log(result, 'this ai response');
+    //console.log(result, 'this ai response');
+    try {
+        return parser.parse(result) // parsing the stringify to json using the zod parser
+    } catch (error) {
+        console.error(error)  // basically handling when parser fails to parse this might happen 
+    }
 }

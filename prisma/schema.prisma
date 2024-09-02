@@ -51,6 +51,7 @@ model Analysis {
   summary  String  @db.Text() // long text.
   color    String
   negative Boolean
+  subject  String
 
   @@unique([entryID])
 }
