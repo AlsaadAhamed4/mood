@@ -47,8 +47,10 @@ model Analysis {
   entryID String
   entry   JournalEntry @relation(fields: [entryID], references: [id]) // defining a relationship
 
-  mood    String
-  summary String @db.Text() // long text
+  mood     String
+  summary  String  @db.Text() // long text.
+  color    String
+  negative Boolean
 
   @@unique([entryID])
 }

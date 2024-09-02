@@ -12,7 +12,7 @@ export default function DashboardLayout({ children, }: { children: React.ReactNo
                         <UserButton />
                     </div>
                 </header>
-                <div className="w-[calc(100vw-200px)]">
+                <div className="w-[calc(100vw-200px)] h-[calc(100vh-66px)]">
                     {children}
                 </div>
             </div>
