@@ -13,7 +13,7 @@ const getEntries = async () => {
         },
         orderBy: {
             createdAt: 'desc'
-        }
+        },
     })
     //await analyze('create me a vue component that renders me a counting number')  need to have credit at the openAI with payment so then it will work 
     return entries;
