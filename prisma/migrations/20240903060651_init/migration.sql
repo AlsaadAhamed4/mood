@@ -26,8 +26,13 @@ CREATE TABLE "Analysis" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "entryID" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
     "mood" TEXT NOT NULL,
     "summary" TEXT NOT NULL,
+    "color" TEXT NOT NULL,
+    "negative" BOOLEAN NOT NULL,
+    "subject" TEXT NOT NULL,
+    "sentimateScore" DOUBLE PRECISION NOT NULL DEFAULT 0,
 
     CONSTRAINT "Analysis_pkey" PRIMARY KEY ("id")
 );
@@ -48,4 +53,7 @@ CREATE UNIQUE INDEX "Analysis_entryID_key" ON "Analysis"("entryID");
 ALTER TABLE "JournalEntry" ADD CONSTRAINT "JournalEntry_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Analysis" ADD CONSTRAINT "Analysis_entryID_fkey" FOREIGN KEY ("entryID") REFERENCES "JournalEntry"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Analysis" ADD CONSTRAINT "Analysis_entryID_fkey" FOREIGN KEY ("entryID") REFERENCES "JournalEntry"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Analysis" ADD CONSTRAINT "Analysis_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

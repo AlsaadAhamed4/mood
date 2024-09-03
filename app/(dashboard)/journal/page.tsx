@@ -16,14 +16,14 @@ const getEntries = async () => {
             createdAt: 'desc'
         },
     })
-    //await analyze('create me a vue component that renders me a counting number')  need to have credit at the openAI with payment so then it will work 
+    //await analyze('create me a vue component that renders me a counting number')  need to have credit at the openAI with payment so then it will work. 
     return entries;
 }
 
 
 const Journal = async () => {
     const entries = await getEntries();
-    console.log(entries, 'these are entries')
+    //console.log(entries, 'these are entries')
     return (
         <div className='p-10 bg-zinc-400/10 h-full'>
             <h2 className='text-3xl mb-8'>Journal</h2>

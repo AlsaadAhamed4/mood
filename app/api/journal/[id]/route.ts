@@ -23,12 +23,13 @@ export const PATCH = async (request, {params})=>{
     //         entryID : updateEntry.id  
     //     },
     //     create :{  // if you dont find in the db then add new data
+    //         userId : user.id,  // we updated the analysis schema by adding a new relationship of user
     //         entryId :  updateEntry.id,
     //         ...analysis
     //     },
     //     update : analysis,  // if found update the analysis
     // })
     //  return NextResponse.json({data : {...updateEntry, analysis : updatedAnalysis}})
-    
+
     return NextResponse.json({data : updateEntry})  // since the is like patch call we will send the updated data back
 }

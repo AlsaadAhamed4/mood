@@ -16,11 +16,11 @@ export const POST = async (request: NextRequest) => {
     // const analysisDataFromAI = await analyze(entry.content);  // commented as of now since dont have paid version
     // await prisma.analysis.create({
     //     data: {
+    //         userId : user.id,    // analysis should have no user Id as we added the relationship
     //         entryID: entry.id,
     //         ...analysisDataFromAI,
     //     }
     // })
-
-    revalidatePath('/journal')
+    await revalidatePath('/journal')
     return NextResponse.json({ data: entry })
 }
