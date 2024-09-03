@@ -4,7 +4,7 @@ import {OpenAI} from 'langchain/llms/openai';
 import {StructuredOutputParser} from 'langchain/output_parsers';
 import z from 'zod'; // for schema related things
 import {loadQARefineChain} from 'langchain/chains'
-import {OpenAIEmbeddings} from 'langchain/embeddings'
+import {OpenAIEmbeddings} from 'langchain/embeddings/openai'
 import {MemoryVectorStore} from 'langchain/vectorstores/memory'
 
 const analysisSchema = z
