@@ -5,6 +5,7 @@ export default function DashboardLayout({ children, }: { children: React.ReactNo
     const navData = [
         { href: '/', label: 'Home' },
         { href: '/journal', label: 'Journal' },
+        { href: '/history', label: 'History' },
     ]
     return (
         <div className="h-screen w-screen relative">

@@ -14,6 +14,7 @@ const analysisSchema = z
     subject : z.string().describe('the subject of the journal entry'),
     negative : z.boolean().describe('is the journal entry negative? (i.e does it contain negative emotions?).'),
     color: z.boolean().describe('a hexadecimal color code the represents the mood of the entry. Example #0101fe for blue representing hapiness.'),
+    sentimentScore : z.number().describe('sentiment of the text and rated on a scale from -10 to 10, where -10 is extremely negative, 0 is neutral, and 10 is extremely positive.')
   });
 
 const parser =  StructuredOutputParser.fromZodSchema(analysisSchema)
