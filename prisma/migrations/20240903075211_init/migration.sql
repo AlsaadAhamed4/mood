@@ -32,7 +32,7 @@ CREATE TABLE "Analysis" (
     "color" TEXT NOT NULL,
     "negative" BOOLEAN NOT NULL,
     "subject" TEXT NOT NULL,
-    "sentimateScore" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "sentimentScore" DOUBLE PRECISION NOT NULL DEFAULT 0,
 
     CONSTRAINT "Analysis_pkey" PRIMARY KEY ("id")
 );
